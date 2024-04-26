@@ -1,7 +1,6 @@
 const express = require(`express`);
 const mongoose = require('mongoose');
-
-const Thing = require(`./models/Thing`);
+const stuffRoutes = require(`./routes/stuff`);
 
 mongoose.connect('mongodb+srv://jouinidamien:Madiana24072669@cluster0.amlnzbo.mongodb.net/',
   { useNewUrlParser: true,
@@ -56,7 +55,7 @@ app.get('/api/stuff', (req, res, next) => {
   .catch(error => res.status(400).json({ error }));
   });
 
-
+app.use(`/api/stuff`, stuffRoutes);
 
 module.exports = app;
 
